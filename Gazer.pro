@@ -35,6 +35,8 @@ qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
+# Add the opencv_imgcodecs OpenCV module to the LIBS setting,
+# since the imwrite function we used to save the cover images is offered by that module.
 unix: mac {
     INCLUDEPATH += /usr/local/include/opencv4
     LIBS += -L/usr/local/lib -lopencv_core -lopencv_imgproc -lopencv_imgcodecs -lopencv_video -lopencv_videoio
